@@ -6,13 +6,13 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/21 14:07:53 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/21 15:38:40 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #ansi chars
 LOG = 	\033[2K
-BLUE = 	\033[34m
+BLUE = 	\033[1;34m
 YELLOW =\033[1;33m
 GREEN =	\033[1;32m
 RED =	\033[1;31m
@@ -35,7 +35,7 @@ CFLAGS =	-Wall -Wextra -Werror
 
 # binaries
 EXE =		
-LIB =
+LIB_A =
 
 # dir
 SRC_DIR =	srcs
@@ -43,8 +43,8 @@ OBJ_DIR =	objs
 INC_DIR =	includes
 
 # libs
-LIB =		-L/usr/local/lib -lmlx -lm -framework OpenGL -framework AppKit     \
-			-Llibft -lft
+LIBMLX =	-L/usr/local/lib -lmlx -lm -framework OpenGL -framework AppKit
+LIBFT =		-Llibft -lft
 MAKELIBFT =	make -C libft/
 
 # sources
@@ -62,16 +62,16 @@ OBJ =		$(addprefix $(OBJ_DIR)/, $(OBJ_NAME))
 OBJ2 =		$(addprefix $(OBJ_DIR)/, $(OBJ2_NAME))
 INC =		$(addprefix -I, $(INC_DIR))
 
-all :		libftcomp $()
-libftcomp :
-		@$(MAKELIBFT) all
-$(EXE) :	$(SRC) $(OBJ)
+all :		$()
+$(EXE) :	$(SRC) $(OBJ) $(LIBFT)
 		@$(CC) $(LIB) $(OBJ) -o $@
 		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling  $(CLEAR)$(LIG)"
-$(LIB) :	$(SRC) $(OBJ)
-		@ar rc $(LIB) $(OBJ)
-		@ranlib $(LIB)
+$(LIB_A) :	$(SRC) $(OBJ)
+		@ar rc $@ $(OBJ)
+		@ranlib $@
 		@echo "$(CLEAR)$(LIG)$(BLUE)  Creating Lib  $(CLEAR)$(LIG)"
+$(LIBFT) :
+		@$(MAKELIBFT) all
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(OBJ_DIR) 2> /dev/null || true
 		@$(CC) $(CFLAGS) $(INC) -o $@ -c $<

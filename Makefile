@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/21 14:02:23 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/21 14:07:53 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ OBJ =		$(addprefix $(OBJ_DIR)/, $(OBJ_NAME))
 OBJ2 =		$(addprefix $(OBJ_DIR)/, $(OBJ2_NAME))
 INC =		$(addprefix -I, $(INC_DIR))
 
-all :		libftcomp $(EXE) $(EXE2)
+all :		libftcomp $()
 libftcomp :
 		@$(MAKELIBFT) all
 $(EXE) :	$(SRC) $(OBJ)

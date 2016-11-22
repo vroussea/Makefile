@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/21 15:38:40 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/22 10:40:02 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 norme :
 		@$(MAKELIBFT) norme
-		@norminette $(SRC) $(SRC2) $(INC)
+		@norminette $(SRC) $(SRC2)
 meteo :
 		@curl http://wttr.in/Paris
 cleanlib :

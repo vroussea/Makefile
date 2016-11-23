@@ -6,7 +6,7 @@
 #    By: vroussea <vroussea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/24 09:55:27 by vroussea          #+#    #+#              #
-#    Updated: 2016/11/22 10:40:02 by vroussea         ###   ########.fr        #
+#    Updated: 2016/11/23 17:14:11 by vroussea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ LIBFT =		-Llibft -lft
 MAKELIBFT =	make -C libft/
 
 # sources
-SRC_NAME =	
+SRC_NAME =	main.c
 SRC2_NAME =	
 
 # objects
@@ -65,7 +65,7 @@ INC =		$(addprefix -I, $(INC_DIR))
 all :		$()
 $(EXE) :	$(SRC) $(OBJ) $(LIBFT)
 		@$(CC) $(LIB) $(OBJ) -o $@
-		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling  $(CLEAR)$(LIG)"
+		@echo "$(CLEAR)$(LIG)$(BLUE)  Compiling "$()"$(CLEAR)$(LIG)"
 $(LIB_A) :	$(SRC) $(OBJ)
 		@ar rc $@ $(OBJ)
 		@ranlib $@
@@ -93,4 +93,5 @@ fclean :	clean
 		@$(MAKELIBFT) fclean
 		@$(RM) $(EXE) $(EXE2)
 re :		fclean all
-.PHONY:	all, clean, fclean, re
+.PHONY :	all, clean, fclean, re
+.SILENT :
